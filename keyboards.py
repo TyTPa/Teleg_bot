@@ -22,10 +22,17 @@ inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
    [InlineKeyboardButton(text="Видео", url='https://rutube.ru/')]
 ])
 #Третий способ создания клавиатуры — билдер
-test = ["кнопка 1", "кнопка 2", "кнопка 3", "кнопка 4"]
+test = ["Опция 1", "Опция 2"]
 
 async def test_keyboard():
       keyboard = InlineKeyboardBuilder()
       for key in test:
          keyboard.add(KeyboardButton(text=key))
       return keyboard.adjust(2).as_markup()
+
+# inline клавиатура
+async def dyn_keyboard():
+    keyboard = InlineKeyboardBuilder()
+    for key in test:
+        keyboard.add(InlineKeyboardButton(text=key))
+    return keyboard.adjust(2).as_markup()
