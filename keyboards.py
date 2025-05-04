@@ -11,9 +11,16 @@ main = ReplyKeyboardMarkup(keyboard=[
 #Клавиатура под сообщением
 
 inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
-   [InlineKeyboardButton(text="Видео", url='https://www.youtube.com/watch?v=HfaIcB4Ogxk')]
+   [InlineKeyboardButton(text="Новости", callback_data='news')],
+   [InlineKeyboardButton(text="Музыка", callback_data='music')],
+   [InlineKeyboardButton(text="Видео", callback_data='video')]
 ])
 
+inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
+   [InlineKeyboardButton(text="Новости", url='https://www.rbc.ru/')],
+   [InlineKeyboardButton(text="Музыка", url='https://music.yandex.ru/')],
+   [InlineKeyboardButton(text="Видео", url='https://rutube.ru/')]
+])
 #Третий способ создания клавиатуры — билдер
 test = ["кнопка 1", "кнопка 2", "кнопка 3", "кнопка 4"]
 

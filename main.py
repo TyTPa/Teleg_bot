@@ -23,15 +23,29 @@ async def start(message: Message):
 # Вызов inline клавиатуры
 #   await message.answer(f'Приветики, {message.from_user.first_name}', reply_markup=kb.inline_keyboard_test)
 # Вызов билдера
-   await message.answer(f'Приветики, {message.from_user.first_name}', reply_markup=await kb.test_keyboard())
+#   await message.answer(f'Приветики, {message.from_user.first_name}', reply_markup=await kb.test_keyboard())
 
-@dp.message(F.text == "Привет")
+# Обработка клавиатуры с replay кнопками
+dp.message(F.text == "Привет")
 async def test_button(message: Message):
    await message.answer(f' Привет, {message.from_user.first_name}',reply_markup=kb.main)
 
 @ dp.message(F.text == "Пока")
 async def test_button(message: Message):
    await message.answer(f' Пока, {message.from_user.first_name}')
+
+# Вызов inline клавиатуры
+
+@dp.message(Command(commands=['link']))
+async def link_command(message: Message):
+   await message.answer(f'Привет, {message.from_user.first_name}', reply_markup=kb.inline_keyboard_test)
+
+# Обработка клавиатуры с inline кнопками
+@dp.callback_query(F.data == 'news')
+async def news(callback: CallbackQuery):
+   await callback.answer("Новости подгружаются")
+   await callback.message.answer('Вот свежие новости!',url='https://www.rbc.ru/')
+
 
 async def main():
    await dp.start_polling(bot)
