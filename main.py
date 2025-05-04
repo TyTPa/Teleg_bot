@@ -43,12 +43,12 @@ async def link_command(message: Message):
 # Обработка клавиатуры с inline кнопками
 @dp.message(Command(commands=['dynamic']))
 async def dynamic_command(message: Message):
+   await message.answer(f'Привет, {message.from_user.first_name}', reply_markup= kb.inline_keyboard_more)
 
-
-@dp.callback_query(F.data == 'news')
+@dp.callback_query(F.data == 'more')
 async def news(callback: CallbackQuery):
-   await callback.answer("Новости подгружаются", show_alert=True)
-   await callback.message.edit_text('Вот свежие новости!', reply_markup=await kb.test_keyboard())
+   await callback.answer("Подгружаем", show_alert=True)
+   await callback.message.edit_text('Вот свежие новости!', reply_markup=await kb.dyn_keyboard())
 
 
 async def main():

@@ -10,25 +10,21 @@ main = ReplyKeyboardMarkup(keyboard=[
 
 #Клавиатура под сообщением
 
-inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
-   [InlineKeyboardButton(text="Новости", callback_data='news')],
-   [InlineKeyboardButton(text="Музыка", callback_data='music')],
-   [InlineKeyboardButton(text="Видео", callback_data='video')]
-])
-
+#для Задания 2
 inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
    [InlineKeyboardButton(text="Новости", url='https://www.rbc.ru/')],
    [InlineKeyboardButton(text="Музыка", url='https://music.yandex.ru/')],
    [InlineKeyboardButton(text="Видео", url='https://rutube.ru/')]
 ])
+
+#для задания 3
+inline_keyboard_more = InlineKeyboardMarkup(inline_keyboard=[
+   [InlineKeyboardButton(text="Показать больше", callback_data='more')],
+
+])
+
 #Третий способ создания клавиатуры — билдер
 test = ["Опция 1", "Опция 2"]
-
-async def test_keyboard():
-      keyboard = InlineKeyboardBuilder()
-      for key in test:
-         keyboard.add(KeyboardButton(text=key))
-      return keyboard.adjust(2).as_markup()
 
 # inline клавиатура
 async def dyn_keyboard():
